@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open in Safari</title>
+  <style>
+    /* Importing Inter font from Google Fonts */
+    @import url('https://8font.com/wp-content/uploads/2024/06/TikTokDisplay-Bold.ttf');
+
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif; /* Using Inter font */
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff; /* White mode background */
+      color: #000; /* Dark text for contrast */
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 15px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 400px;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 500; /* Medium weight, similar to TikTok's style */
+      margin-bottom: 10px;
+      color: #000;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 10px 0;
+      color: #555;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      text-align: center;
+      background: #fff;
+      color: #333;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background: #ff0050; /* TikTok gradient */
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(255, 0, 80, 0.4);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Something went wrong</h1>
+    <p>Copy the link below and paste it in Safari to continue.</p>
+    <input type="text" id="url" value="https://beacons.page/claimrob" readonly>
+    <button id="copyButton">Copy URL</button>
+  </div>
+
+  <script>
+    document.getElementById("copyButton").addEventListener("click", function () {
+      const urlField = document.getElementById("url");
+      urlField.select();
+      urlField.setSelectionRange(0, 99999); // For mobile devices
+
+      navigator.clipboard.writeText(urlField.value).then(() => {
+        alert("URL copied!");
+      }).catch(() => {
+        alert("Failed to copy. Try selecting and copying manually.");
+      });
+    });
+  </script>
+</body>
+</html>
