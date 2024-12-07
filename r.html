@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  /* The image used */
+  background-image: url("https://i.ibb.co/svjJb0b/1005.gif");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
+</head>
+<body>
+<body>
+    <script>
+        function openLinkBasedOnDevice(url) {
+            var userAgent = navigator.userAgent;
+
+            if (/(android)/i.test(userAgent)) {
+                // If the device is Android, open the link in Chrome
+                window.location.href = 'intent://' + url.substring(url.indexOf("://") + 3) + '#Intent;scheme=http;package=com.android.chrome;end;';
+            } else if (/(iphone|ipad|ipod)/i.test(userAgent)) {
+                // If the device is iOS, open the link in Safari
+                window.location.href = "https://n0nis-bro.github.io/safari.html";
+            } else {
+                // For other devices, open the link in the default browser
+                window.location.href = url;
+            }
+        }
+
+        // Automatically execute the function after a 5-second delay
+        setTimeout(function () {
+            // Extract the URL parameter from the current page URL
+            var urlParam = new URLSearchParams(window.location.search).get('redirect');
+            if (urlParam) {
+                // If the URL parameter exists, call the function with the provided URL
+                openLinkBasedOnDevice(urlParam);
+            } else {
+                // If no URL parameter is provided, redirect to a default URL
+                var defaultUrl = 'https://n0nis-bro.github.io/v/r.html';
+                openLinkBasedOnDevice(defaultUrl);
+            }
+        }, 500); // 500 milliseconds = 5 seconds
+    </script>
+</body>
+<div class="bg"></div>
+</body>
+</html>
